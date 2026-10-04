@@ -22,3 +22,11 @@ python3 monitor.py          # keep running; leave the terminal open
 | `schedule` | tiers: more than 14 days out → 1 check/day, otherwise 3/day. Change these numbers or add tiers as you like |
 | `first_check_hour` | hour of the first daily check; the rest are spaced evenly (3/day = 9:00, 17:00, 01:00) |
 | `notify` | Mac pop-up, plus an optional [ntfy.sh](https://ntfy.sh) topic (phone push) or Discord webhook |
+
+## Run in the background (recommended)
+```bash
+./install_mac.sh            # installs dependencies, starts at every login, runs a test check
+tail -f monitor.log         # see what it's doing
+./install_mac.sh uninstall  # stop and remove
+```
+Your Mac must be awake at check times; a check missed during sleep runs at the next slot.
